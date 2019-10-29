@@ -1,5 +1,6 @@
 // Your code goes here
 let body = document.querySelector('body')
+let navCont = document.querySelector('.nav-container')
 let navMain = document.querySelector('.main-navigation')
 let footer = document.querySelector('.footer')
 let navLinks = document.querySelectorAll('.nav a')
@@ -10,7 +11,7 @@ let thirdImg = document.querySelector('.inverse-content img')
 let lastImg = document.querySelector('.content-destination img')
 let buttons = document.querySelectorAll('.content-pick .btn')
 
-nightMode.addEventListener('click', () => {
+nightMode.addEventListener('click', (event) => {
     nightMode.textContent='Night Bus'
     body.style.color='limegreen'
     body.style.background='black'
@@ -27,8 +28,9 @@ nightMode.addEventListener('click', () => {
         elem.style.background = 'limegreen'
         
     })
+    event.stopPropagation()
 })
-nightMode.addEventListener('dblclick', () => {
+nightMode.addEventListener('dblclick', (event) => {
     nightMode.textContent='Fun Bus'
     body.style.color='black'
     body.style.background='white'
@@ -49,8 +51,9 @@ nightMode.addEventListener('dblclick', () => {
     secondImg.src = 'img/adventure.jpg'
     thirdImg.src = 'img/fun.jpg'
     lastImg.src = 'img/destination.jpg'
+    event.stopPropagation()
 })
-introImg.addEventListener('mouseover', () => {
+introImg.addEventListener('mouseenter', () => {
     nightMode.textContent='Death Bus'
     body.style.color='crimson'
     body.style.background='black'
@@ -72,4 +75,67 @@ introImg.addEventListener('mouseover', () => {
     thirdImg.src = 'img/horror_ghost-other.jpg'
     lastImg.src = 'img/horforest.jpg'
 })
+introImg.addEventListener('mouseleave', ()=>{
+    navLinks.forEach((elem) => {
+        elem.style.color='black'
+        
+    })
+})
+secondImg.addEventListener('mousedown', ()=>{
+    secondImg.src = 'img/adventure.jpg'
+})
+secondImg.addEventListener('mouseup', ()=>{
+    secondImg.src = 'img/pic2.jpeg'
+})
 
+navCont.addEventListener('click', (event)=>{
+    body.style.background = 'crimson'
+    event.stopPropagation()
+   
+})
+navLinks.forEach((elem)=> elem.addEventListener('click', (event)=>{
+    event.preventDefault()
+}))
+
+lastImg.addEventListener('mouseover', ()=>{
+    
+    body.style.color='black'
+    body.style.background='black'
+    navMain.style.color='black'
+    navMain.style.background='black'
+    footer.style.color='black'
+    footer.style.background='black'
+    navLinks.forEach((elem) => {
+        elem.style.color='black'
+        
+    })
+    buttons.forEach((elem) => {
+        elem.style.color='black'
+        elem.style.background = 'black'
+        
+    })
+})
+lastImg.addEventListener('mouseout', ()=>{
+    
+    body.style.color='red'
+    body.style.background='red'
+    navMain.style.color='red'
+    navMain.style.background='red'
+    footer.style.color='red'
+    footer.style.background='black'
+    navLinks.forEach((elem) => {
+        elem.style.color='black'
+        
+    })
+    buttons.forEach((elem) => {
+        elem.style.color='black'
+        elem.style.background = 'black'
+        
+    })
+})
+
+navLinks.forEach((elem)=>{
+    elem.addEventListener('click', (event)=>{
+        event.preventDefault()
+    })
+})
